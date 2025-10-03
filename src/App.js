@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import TextSubmission from './components/TextSubmission';
+import WordQuery from './components/WordQuery';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h1>Word Count Application</h1>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Submit Text</Link>
+              </li>
+              <li>
+                <Link to="/query">Query Word Count</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<TextSubmission />} />
+            <Route path="/query" element={<WordQuery />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
